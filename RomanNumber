@@ -1,0 +1,56 @@
+//Program to get equivalent Roman values of an input number (0-109)
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Roman {
+
+    public static void main(String[] args) {
+
+        Map<Integer,String> hashmap = new HashMap<>();
+
+        hashmap.put(1,"I");
+        hashmap.put(2,"II");
+        hashmap.put(3,"III");
+        hashmap.put(4,"IV");
+        hashmap.put(5,"V");
+        hashmap.put(6,"VI");
+        hashmap.put(7,"VII");
+        hashmap.put(8,"VIII");
+        hashmap.put(9,"IX");
+        hashmap.put(10,"X");
+        hashmap.put(40,"XL");
+        hashmap.put(50,"L");
+        hashmap.put(60,"LX");
+        hashmap.put(70,"LXX");
+        hashmap.put(80,"LXXX");
+        hashmap.put(90,"XC");
+        hashmap.put(100,"C");
+
+        Scanner scanner = new Scanner(System.in);
+
+        Integer number = scanner.nextInt();
+
+        if(hashmap.containsKey(number)){
+            System.out.println(hashmap.get(number));
+        }
+
+        else{
+            int quot,rem=0;
+            quot = number/10;
+            rem= number%10;
+            if(quot<=3){
+                for(int i=0;i<quot;i++){
+                    System.out.print("X");
+                }
+                System.out.println(hashmap.get(rem));
+            }
+
+            else{
+                System.out.print(hashmap.get(quot*10)+hashmap.get(rem));
+            }
+        }
+
+    }
+}
